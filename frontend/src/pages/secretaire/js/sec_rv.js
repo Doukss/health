@@ -1,7 +1,15 @@
+import {
+  closeAddRvModal,
+  handleAddRvFormSubmit,
+  loadDoctorsAndPatients,
+  openAddRvModal,
+} from "../../../components/modals/rv/rv_modal.js";
 import { fetchData } from "../../../services/api.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadAppointmentsTable();
+  await loadModal();
+  await loadDoctorsAndPatients();
   const sidebarDeviceButton = document.getElementById("sidebar-device");
   const sidebarClose = document.getElementById("sidebar-close");
   sidebarDeviceButton.addEventListener("click", openSidebar);
@@ -82,6 +90,33 @@ async function loadAppointmentsTable() {
   } catch (error) {
     console.error("Erreur lors du chargement des rendez-vous :", error);
     alert("Une erreur s'est produite lors du chargement des rendez-vous.");
+  }
+}
+
+async function loadModal() {
+  try {
+    const response = await fetch(
+      "/frontend/src/components/modals/rv/rv_modal.html"
+    );
+    if (!response.ok) {
+      throw new Error("Erreur lors du chargement de la modale");
+    }
+
+    const modalHTML = await response.text();
+    const modalContainer = document.getElementById("modalContainer");
+    modalContainer.innerHTML = modalHTML;
+    const openModalButton = document.getElementById("openAddRvModal");
+    const cancelAddPatientButton = document.getElementById("cancelAddRv");
+    openModalButton.addEventListener("click", openAddRvModal);
+    cancelAddPatientButton.addEventListener("click", closeAddRvModal);
+    const form = document.getElementById("addRvForm");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      await handleAddRvFormSubmit();
+    });
+  } catch (error) {
+    console.error("Erreur :", error);
   }
 }
 

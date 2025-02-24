@@ -24,7 +24,7 @@
       "id_role": 2
     },
     {
-      "id": 2,
+      "id": "2",
       "nom": "Thiam",
       "prenom": "Ousmane",
       "telephone": "958777095",
@@ -48,7 +48,7 @@
       "id_role": 3
     },
     {
-      "id": 2,
+      "id": "2",
       "nom": "lo",
       "prenom": "Souleymane",
       "telephone": "0612345678",
@@ -83,6 +83,16 @@
       "id_secretaire": 1,
       "status": "en attente",
       "specialite": "dentiste"
+    },
+    {
+      "id": 2,
+      "date": "2025-02-25",
+      "heure": "00:05",
+      "id_docteur": 2,
+      "id_patient": 2,
+      "id_secretaire": 1,
+      "status": "en attente",
+      "specialite": "chirurgien"
     }
   ]
 }
