@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.min.css"
+      rel="stylesheet"
+    />
+    <title>Dashboard</title>
+  </head>
+  <body class="flex h-screen">
+    <!-- sidebar -->
+    <div
+      id="sidebar"
+      class="flex flex-col justify-between p-3 fixed left-0 bg-gray-50 shadow-md h-full w-64 lg:w-52 md:flex transform transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0 z-50"
+    >
+      <div class="flex justify-between">
+        <div class="flex items-center text-white gap-1">
+          <div class="p-2 bg-purple-500 rounded text-white self-center">GR</div>
+          <div class="flex flex-col text-gray-800 font-medium">
+            <span>Gestion</span>
+            <span>Rendez-vous</span>
+          </div>
+        </div>
+        <div class="lg:hidden" id="sidebar-close">
+          <i class="ri-layout-right-line text-lg font-semibold"></i>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li class="py-2 bg-purple-100 hover:bg-purple-100">
+            <a href="" class="font-medium gap-3 flex items-center">
+              <i class="ri-home-3-line text-lg"></i>
+              <span>Accueil</span>
+            </a>
+          </li>
+          <li class="py-2 hover:bg-purple-100">
+            <a
+              href="/frontend/src/pages/secretaire/sec_docteur.html"
+              class="font-medium gap-3 flex items-center"
+            >
+              <i class="ri-nurse-line text-lg"></i>
+              <span>Medecins</span>
+            </a>
+          </li>
+          <li class="py-2 hover:bg-purple-100">
+            <a
+              href="/frontend/src/pages/secretaire/sec_patient.html"
+              class="font-medium gap-3 flex items-center"
+            >
+              <i class="ri-user-line text-lg"></i>
+              <span>Patients</span>
+            </a>
+          </li>
+          <li class="py-2 hover:bg-purple-100">
+            <a
+              href="/frontend/src/pages/secretaire/sec_rv.html"
+              class="font-medium gap-3 flex items-center"
+            >
+              <i class="ri-timer-flash-line text-lg"></i>
+              <span>Rendez-vous</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <button
+        class="px-2 py-3 bg-gray-100 hover:bg-gray-200 font-medium"
+        id="logoutBtn"
+      >
+        <span>Deconnexion</span>
+        <i class="ri-logout-box-line"></i>
+      </button>
+    </div>
+    <!-- contenue -->
+    <div class="w-full lg:ml-52">
+      <!-- header -->
+      <div class="flex items-center justify-between py-2 px-3 shadow-md">
+        <div>
+          <h1 class="text-lg font-medium hidden md:block">
+            Espace secretaires
+          </h1>
+          <div
+            class="h-10 w-10 rounded-full bg-gray-50 flex justify-center items-center md:hidden"
+            id="sidebar-device"
+          >
+            <i class="ri-menu-2-fill font-medium"></i>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="hidden md:flex flex-col mr-4 text-sm font-medium">
+            <p class="text-end" id="profileName"></p>
+            <p class="" id="profileEmail"></p>
+          </div>
+          <img
+            id="profilePhoto"
+            alt="image"
+            class="w-10 h-10 rounded-full object-cover"
+          />
+        </div>
+      </div>
+      <!-- section 1 -->
+      <div class="flex flex-col gap-6 mt-7 px-3">
+        <h1
+          class="font-bold text-xl md:text-3xl text-gray-700"
+          id="profileTitle"
+        ></h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div
+            class="flex items-center gap-3 p-2 shadow-md rounded transition-transform duration-300 hover:scale-105 cursor-pointer"
+          >
+            <div class="w-20 h-20 rounded-full bg-blue-50 flex items-center">
+              <img
+                src="/frontend/public/assets/patients.png"
+                alt=""
+                class="object-cover"
+              />
+            </div>
+            <div class="flex flex-col gap-2">
+              <h2 class="font-medium text-lg">Nombres de patients</h2>
+              <p id="totalPatients" class="text-center"></p>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-3 p-2 shadow-md rounded transition-transform duration-300 hover:scale-105 cursor-pointer"
+          >
+            <div class="w-20 h-20 rounded-full bg-orange-50 flex items-center">
+              <img
+                src="/frontend/public/assets/docteur.png"
+                alt=""
+                class="object-cover"
+              />
+            </div>
+            <div class="flex flex-col gap-2">
+              <h2 class="font-medium text-lg">Nombres de docteurs</h2>
+              <p id="totalDoctors" class="text-center"></p>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-3 p-2 shadow-md rounded transition-transform duration-300 hover:scale-105 cursor-pointer"
+          >
+            <div class="w-20 h-20 rounded-full bg-green-50 flex items-center">
+              <img
+                src="/frontend/public/assets/rendez-vous.png"
+                alt=""
+                class="object-cover"
+              />
+            </div>
+            <div class="flex flex-col gap-2">
+              <h2 class="font-medium text-lg">Nombres de rendez-vous</h2>
+              <p id="totalAppointments" class="text-center"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="../../routes/router.js"></script>
+    <script type="module" src="./js/dashboard.js"></script>
+  </body>
+</html>
