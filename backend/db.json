@@ -22,6 +22,17 @@
       "specialite": "dentiste",
       "avatar": "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=600",
       "id_role": 2
+    },
+    {
+      "id": 2,
+      "nom": "Thiam",
+      "prenom": "Ousmane",
+      "telephone": "958777095",
+      "email": "ousmane025@gmail.com",
+      "password": "liverpool",
+      "specialite": "chirurgien",
+      "avatar": "https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "id_role": 2
     }
   ],
   "patients": [

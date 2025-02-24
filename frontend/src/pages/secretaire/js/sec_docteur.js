@@ -1,7 +1,13 @@
+import {
+  closeAddDocteurModal,
+  handleAddDocteurFormSubmit,
+  openAddDocteurModal,
+} from "../../../components/modals/docteurs/docteur_modal.js";
 import { getDoctors } from "../../../services/doctorService.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadDoctorsTable();
+  await loadModal();
   const sidebarDeviceButton = document.getElementById("sidebar-device");
   const sidebarClose = document.getElementById("sidebar-close");
   sidebarDeviceButton.addEventListener("click", openSidebar);
@@ -38,6 +44,33 @@ async function loadDoctorsTable() {
   } catch (error) {
     console.error("Erreur lors du chargement des docteurs :", error);
     alert("Une erreur s'est produite lors du chargement des docteurs.");
+  }
+}
+
+async function loadModal() {
+  try {
+    const response = await fetch(
+      "/frontend/src/components/modals/docteurs/docteur_modal.html"
+    );
+    if (!response.ok) {
+      throw new Error("Erreur lors du chargement de la modale");
+    }
+
+    const modalHTML = await response.text();
+    const modalContainer = document.getElementById("modalContainer");
+    modalContainer.innerHTML = modalHTML;
+    const openModalButton = document.getElementById("openAddDocteurModal");
+    const cancelAddDocteurButton = document.getElementById("cancelAddDocteur");
+    openModalButton.addEventListener("click", openAddDocteurModal);
+    cancelAddDocteurButton.addEventListener("click", closeAddDocteurModal);
+    const form = document.getElementById("addDocteurForm");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      await handleAddDocteurFormSubmit();
+    });
+  } catch (error) {
+    console.error("Erreur :", error);
   }
 }
 
