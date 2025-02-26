@@ -6,8 +6,10 @@ import {
   getStatistiquesRendezVousParStatut,
 } from "../../../services/doctorService.js";
 import { getCurrentUser } from "../../../stores/auth.js";
+import { handleNotifications } from "../../../stores/notification.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  handleNotifications();
   await displayCardInfo();
   displayDocteurInfo();
   const sidebarDeviceButton = document.getElementById("sidebar-device");

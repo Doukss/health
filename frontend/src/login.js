@@ -1,5 +1,6 @@
 import { login } from "./services/authServices.js";
 import { setCurrentUser } from "./stores/auth.js";
+import { setNotification } from "./stores/notification.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("#loginForm");
@@ -30,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const user = await login(email, password);
       setCurrentUser(user);
+      setNotification("Connexion reussit avec success");
       redirectUser(user.role);
     } catch (error) {
       alert("Erreur: " + error.message);
