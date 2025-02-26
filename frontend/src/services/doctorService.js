@@ -31,6 +31,24 @@ export async function getRendezVousByDocteur(idDocteur) {
   return rendezVous.filter((rdv) => rdv.id_docteur == idDocteur);
 }
 
+export async function getRendezVousAndPatientInfoByDocteur(idDocteur) {
+  const rendezVous = await fetchData("rendez-vous");
+  const patients = await fetchData("patients");
+
+  const rendezVousDocteur = rendezVous
+    .filter((rdv) => rdv.id_docteur == idDocteur)
+    .map((rdv) => {
+      const patient = patients.find((p) => p.id == rdv.id_patient);
+      return {
+        ...rdv,
+        patientNom: patient ? `${patient.prenom} ${patient.nom}` : "Inconnu",
+        patientAvatar: patient ? patient.avatar : "",
+      };
+    });
+
+  return rendezVousDocteur;
+}
+
 export async function getPatientsByDocteur(idDocteur) {
   const rendezVous = await fetchData("rendez-vous");
   const patientsIds = new Set(

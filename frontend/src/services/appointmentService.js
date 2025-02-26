@@ -25,3 +25,19 @@ export async function addAppointment(appointmentData) {
     throw error;
   }
 }
+
+export async function updateRendezVousStatus(id, status) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/rendez-vous/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status }),
+    });
+    return response.json();
+  } catch (error) {
+    console.error("Erreur :", error);
+    throw error;
+  }
+}

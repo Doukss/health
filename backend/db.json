@@ -77,11 +77,11 @@
     {
       "id": "1",
       "date": "2025-01-01",
-      "heure": "10:00:00",
+      "heure": "10:00",
       "id_docteur": 1,
       "id_patient": 1,
       "id_secretaire": 1,
-      "status": "en attente",
+      "status": "En attente",
       "specialite": "dentiste"
     },
     {
@@ -91,7 +91,7 @@
       "id_docteur": 1,
       "id_patient": 2,
       "id_secretaire": 1,
-      "status": "en attente",
+      "status": "En attente",
       "specialite": "chirurgien"
     }
   ]
