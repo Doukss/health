@@ -89,9 +89,9 @@
       "date": "2025-02-25",
       "heure": "00:05",
       "id_docteur": 1,
-      "id_patient": 2,
+      "id_patient": 1,
       "id_secretaire": 1,
-      "status": "En attente",
+      "status": "Accepté",
       "specialite": "chirurgien"
     }
   ]

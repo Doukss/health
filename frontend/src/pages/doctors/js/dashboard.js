@@ -32,7 +32,7 @@ async function displayCardInfo() {
   document.getElementById("totalAppointments").textContent = rendezVous.length;
   document.getElementById("totalPatients").textContent = patients.length;
   document.getElementById("pendingAppointments").textContent =
-    statistiquesRendezVous["en attente"] || 0;
+    statistiquesRendezVous["En attente"] || 0;
 
   displayCharRvStatusDocteur(statistiquesRendezVous);
   displayCharPatientDocteur(statistiquesPatients);

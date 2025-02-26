@@ -1,3 +1,4 @@
+import { showNotification } from "./components/notification/notification.js";
 import { login } from "./services/authServices.js";
 import { setCurrentUser } from "./stores/auth.js";
 import { setNotification } from "./stores/notification.js";
@@ -13,6 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.querySelector("#password").value;
     const errorEmail = document.getElementById("errorEmail");
     const errorPassword = document.getElementById("errorPassword");
+
+    errorEmail.textContent = "";
+    errorPassword.textContent = "";
 
     if (!email) {
       errorEmail.textContent = "l'email est requise";
@@ -34,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setNotification("Connexion reussit avec success");
       redirectUser(user.role);
     } catch (error) {
-      alert("Erreur: " + error.message);
+      showNotification(error, "error");
     }
   });
 });
